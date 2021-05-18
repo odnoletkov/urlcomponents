@@ -3,7 +3,18 @@ import Foundation
 switch ProcessInfo.processInfo.arguments.count {
 
 case 1:
-    fatalError()
+    var object = try JSONSerialization.jsonObject(with: FileHandle.standardInput.readDataToEndOfFile()) as! [String: Any]
+
+    if let query = object["query"] as! [String: String?]? {
+        var components = URLComponents()
+        components.queryItems = query.map(URLQueryItem.init)
+        object["query"] = components.query
+    }
+
+    let data = try JSONSerialization.data(withJSONObject: object)
+
+    let components = try JSONDecoder().decode(URLComponents.self, from: data)
+    print(components)
 
 case 2:
     let components = URLComponents(string: ProcessInfo.processInfo.arguments[1])!
