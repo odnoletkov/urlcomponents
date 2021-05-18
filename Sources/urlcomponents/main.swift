@@ -15,7 +15,7 @@ case 1:
     let data = try JSONSerialization.data(withJSONObject: object)
 
     let components = try JSONDecoder().decode(URLComponents.self, from: data)
-    print(components)
+    print(components.string!)
 
 case 2:
     let components = URLComponents(string: CommandLine.arguments[1])!
