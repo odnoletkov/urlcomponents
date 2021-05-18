@@ -1,6 +1,7 @@
+#!/usr/bin/env swift
 import Foundation
 
-switch ProcessInfo.processInfo.arguments.count {
+switch CommandLine.arguments.count {
 
 case 1:
     var object = try JSONSerialization.jsonObject(with: FileHandle.standardInput.readDataToEndOfFile()) as! [String: Any]
@@ -17,7 +18,7 @@ case 1:
     print(components)
 
 case 2:
-    let components = URLComponents(string: ProcessInfo.processInfo.arguments[1])!
+    let components = URLComponents(string: CommandLine.arguments[1])!
 
     var json = try JSONSerialization.jsonObject(with: try JSONEncoder().encode(components)) as! [String: Any]
 
