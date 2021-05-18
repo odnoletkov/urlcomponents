@@ -26,5 +26,10 @@ extension URLQueryItem: Encodable {
 
 json["query"] = try components.queryItems?.jsonObject()
 
-let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+var options = JSONSerialization.WritingOptions.prettyPrinted
+if #available(OSX 10.13, *) {
+    options.formUnion(.sortedKeys)
+}
+
+let data = try JSONSerialization.data(withJSONObject: json, options: options)
 print(String(data: data, encoding: .utf8)!)
