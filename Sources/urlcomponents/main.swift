@@ -12,19 +12,9 @@ extension Encodable {
 
 var json = try components.jsonObject() as! [String: Any]
 
-extension URLQueryItem: Encodable {
-    public func encode(to encoder: Encoder) throws {
-        enum Keys: CodingKey {
-            case name
-            case value
-        }
-        var container = encoder.container(keyedBy: Keys.self)
-        try container.encode(value, forKey: .value)
-        try container.encode(name, forKey: .name)
-    }
+json["query"] = components.queryItems.map {
+    Dictionary($0.map { ($0.name, $0.value) }) { $1 }
 }
-
-json["query"] = try components.queryItems?.jsonObject()
 
 var options = JSONSerialization.WritingOptions.prettyPrinted
 if #available(OSX 10.13, *) {
