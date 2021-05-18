@@ -33,4 +33,4 @@ https://example.com/file
 
 * Better errors
 
-  * Invalid path when encoding
+  * Missing path when encoding

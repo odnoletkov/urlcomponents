@@ -15,7 +15,11 @@ case 1:
     let data = try JSONSerialization.data(withJSONObject: object)
 
     let components = try JSONDecoder().decode(URLComponents.self, from: data)
-    print(components.string!)
+    guard let string = components.string else {
+        fatalError("Invalid URL components: https://developer.apple.com/documentation/foundation/nsurlcomponents/1413469-url")
+    }
+    
+    print(string)
 
 case 2:
     let components = URLComponents(string: CommandLine.arguments[1])!

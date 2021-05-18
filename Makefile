@@ -10,5 +10,8 @@ encode:
 executable:
 	Sources/urlcomponents/main.swift "$(URL)"
 
-error-path:
-	urlcomponents http://a | jq '.path = null' | urlcomponents
+error-missing-path:
+	urlcomponents http://a | jq '.path = null' | swift run urlcomponents
+
+error-invalid-path:
+	echo '{"host": "host", "path": "path"}' | swift run urlcomponents

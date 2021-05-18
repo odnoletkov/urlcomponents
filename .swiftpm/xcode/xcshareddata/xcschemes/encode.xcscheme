@@ -56,11 +56,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-c &apos;$(TARGET_BUILD_DIR)/$(PRODUCT_NAME) &quot;scheme://user:pass@host.com:123/path/to?q1=p1&amp;q2&amp;q3=&amp;=p4&amp;=#fragment&quot; | $(TARGET_BUILD_DIR)/$(PRODUCT_NAME)&apos;"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-c &apos;echo &quot;{\&quot;host\&quot;: \&quot;example.com\&quot;, \&quot;path\&quot;: \&quot;/file\&quot;}&quot; | $(TARGET_BUILD_DIR)/$(PRODUCT_NAME)&apos;"
-            isEnabled = "YES">
+            argument = "-c &apos;echo &quot;{\&quot;host\&quot;: \&quot;example.com\&quot;, \&quot;path\&quot;: \&quot;file\&quot;}&quot; | $(TARGET_BUILD_DIR)/$(PRODUCT_NAME)&apos;"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
