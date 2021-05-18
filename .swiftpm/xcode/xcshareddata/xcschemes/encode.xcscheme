@@ -55,7 +55,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-c &apos;cat &lt;($(TARGET_BUILD_DIR)/$(PRODUCT_NAME) &quot;scheme://user:pass@host.com:123/path/to?q1=p1&amp;q2&amp;q3=&amp;=p4&amp;=#fragment&quot;)&apos;"
+            argument = "-c &apos;$(TARGET_BUILD_DIR)/$(PRODUCT_NAME) &quot;scheme://user:pass@host.com:123/path/to?q1=p1&amp;q2&amp;q3=&amp;=p4&amp;=#fragment&quot; | $(TARGET_BUILD_DIR)/$(PRODUCT_NAME)&apos;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
