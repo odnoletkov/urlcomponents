@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "scheme://user:pass@host.com:123/path/to?q1=p1&amp;q2&amp;q3=&amp;=p4&amp;=#fragment"
+            argument = "scheme://user:pass@host.com:123/path/to?q1=p1&amp;q2&amp;q3=&amp;=#fragment"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

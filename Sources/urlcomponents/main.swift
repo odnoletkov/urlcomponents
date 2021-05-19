@@ -18,7 +18,7 @@ case 1:
     guard let string = components.string else {
         fatalError("Invalid URL components: https://developer.apple.com/documentation/foundation/nsurlcomponents/1413469-url")
     }
-    
+
     print(string)
 
 case 2:
@@ -27,7 +27,7 @@ case 2:
     var json = try JSONSerialization.jsonObject(with: try JSONEncoder().encode(components)) as! [String: Any]
 
     json["query"] = components.queryItems.map {
-        Dictionary($0.map { ($0.name, $0.value) }) { $1 }
+        Dictionary(uniqueKeysWithValues: $0.map { ($0.name, $0.value) })
     }
 
     var options = JSONSerialization.WritingOptions.prettyPrinted
