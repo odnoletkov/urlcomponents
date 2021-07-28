@@ -1,9 +1,11 @@
 #!/usr/bin/env swift
 import Foundation
 
-switch CommandLine.arguments.count {
+var it = CommandLine.arguments.makeIterator()
 
-case 1:
+switch (it.next(), it.next(), it.next()) {
+
+case (_, nil, nil):
     var object = try JSONSerialization.jsonObject(with: FileHandle.standardInput.readDataToEndOfFile()) as! [String: Any]
 
     if let query = object["query"] as! [String: String?]? {
@@ -21,8 +23,8 @@ case 1:
 
     print(string)
 
-case 2:
-    let components = URLComponents(string: CommandLine.arguments[1])!
+case (_, let path?, nil):
+    let components = URLComponents(string: path)!
 
     var json = try JSONSerialization.jsonObject(with: try JSONEncoder().encode(components)) as! [String: Any]
 
@@ -38,6 +40,6 @@ case 2:
     let data = try JSONSerialization.data(withJSONObject: json, options: options)
     print(String(data: data, encoding: .utf8)!)
 
-default:
+case (_, _, .some):
     fatalError("expected zero or one argument")
 }
