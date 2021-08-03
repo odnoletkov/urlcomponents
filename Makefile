@@ -1,4 +1,4 @@
-URL ?= scheme://user:pass@host.com:123/path/to?q1=p1&q2&q3=&#fragment
+URL ?= scheme://user:pass@host.com:123/path/to?q1=p1&q2&q3=&=p4&=&=#fragment
 
 decode:
 	swift run urlcomponents "$(URL)"
