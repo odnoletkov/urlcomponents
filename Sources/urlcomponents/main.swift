@@ -7,16 +7,16 @@ switch (it.next(), it.next(), it.next()) {
 
 case (_, nil, nil):
     var object = try JSONSerialization.jsonObject(with: FileHandle.standardInput.readDataToEndOfFile()) as! [String: Any]
-
-    if let query = object["query"] as! [String: String?]? {
-        var components = URLComponents()
-        components.queryItems = query.map(URLQueryItem.init)
-        object["query"] = components.query
-    }
+    let query = object["query"]
+    object["query"] = nil
 
     let data = try JSONSerialization.data(withJSONObject: object)
+    var components = try JSONDecoder().decode(URLComponents.self, from: data)
 
-    let components = try JSONDecoder().decode(URLComponents.self, from: data)
+    if let query = query as! [String: String?]? {
+        components.queryItems = query.map(URLQueryItem.init(name:value:))
+    }
+
     guard let string = components.string else {
         fatalError("Invalid URL components: https://developer.apple.com/documentation/foundation/nsurlcomponents/1413469-url")
     }
